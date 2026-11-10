@@ -1,6 +1,6 @@
 ---
 name: memory-checkup
-version: 1.1.0
+version: 1.1.1
 description: Audit and repair an AI agent's memory corpus for consistency. Use when memory contains stale numbers or superseded facts, when different memory files contradict each other (e.g. old download/star counts), when a metric changed and documents must be synced, when daily memory flushes have gaps or stopped, when memory references files that no longer exist, when the user says "check my memory", "memory audit", "memory checkup", or when answering from memory feels risky because facts may have drifted.
 ---
 
