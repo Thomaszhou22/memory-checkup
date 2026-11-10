@@ -1,7 +1,7 @@
 ---
 name: memory-checkup
 version: 1.1.0
-description: Audit and repair an AI agent's memory corpus for consistency. Use when memory contains stale numbers or superseded facts, when different memory files contradict each other (e.g. old download/star counts), when a metric changed and documents must be synced, when daily memory flushes have gaps or stopped, when memory references files that no longer exist, when the user says "check my memory", "memory audit", "体检记忆", or when answering from memory feels risky because facts may have drifted.
+description: Audit and repair an AI agent's memory corpus for consistency. Use when memory contains stale numbers or superseded facts, when different memory files contradict each other (e.g. old download/star counts), when a metric changed and documents must be synced, when daily memory flushes have gaps or stopped, when memory references files that no longer exist, when the user says "check my memory", "memory audit", "memory checkup", or when answering from memory feels risky because facts may have drifted.
 ---
 
 # Memory Checkup
@@ -9,29 +9,29 @@ description: Audit and repair an AI agent's memory corpus for consistency. Use w
 Audit an agent's memory corpus (MEMORY.md, USER.md, and files under memory/) and surface consistency problems before they reach the user: stale superseded numbers, contradictions, dangling file references, abandoned daily entries, and orphan files.
 
 
-## Onboarding（首次使用）
+## Onboarding (First Use)
 
-当用户第一次触发本 skill 且 `memory/memory_checkup_state.json` 不存在时，执行一次性引导：
+When the user first triggers this skill and `memory/memory_checkup_state.json` doesn't exist, run a one-time setup:
 
-1. **介绍能力**（一句话）：_"我可以审计你的 agent 记忆库——过期数字、矛盾事实、悬空引用，一次全查出来。"_
+1. **Introduce capability** (one sentence): _"I can audit your agent's memory corpus — stale numbers, contradictory facts, dangling references — all in one run."_
 
-2. **快速配置：**
+2. **Quick configuration:**
 
-1. **报告语言**（默认：跟随用户输入语言）
-   - 中文 / English / 跟随用户
-2. **记忆库路径**（默认：自动检测当前工作区）
+1. **Report language**(Default: Follow user input language)
+   - Chinese / English / Follow user input
+2. **Memory corpus path**(Default: auto-detect current workspace)
 
-3. **写入初始状态文件** `memory/memory_checkup_state.json`（JSON 格式，含 `onboarded: true` 和时间戳）
+3. **Write initial state file** `memory/memory_checkup_state.json`(JSON format, with `onboarded: true` and timestamp)
 
-4. **确认完成**：_"设置完成！以后直接用就行。随时可以说'reset settings'重新配置。"_
+4. **Confirm completion**: _"Setup done! Just use it from now on. Say 'reset settings' anytime to reconfigure."
 
-**Onboarding 只执行一次**，后续每次激活直接读取状态文件。用户说 "reset settings" 时删除状态文件重新引导。
+**Onboarding runs exactly once.** Subsequent activations read the state file directly. When the user says "reset settings", delete the state file and re-run setup.
 
 ---
 
 ## When to run
 
-1. The user asks to check/audit/clean memory ("体检", "check my memory").
+1. The user asks to check/audit/clean memory ("checkup", "check my memory").
 2. Before answering questions that depend on facts recorded over many days (awards, counts, project statuses).
 3. After a metric changes and the user asks to sync all documents (e.g. download counts in application essays).
 4. Periodically, alongside daily memory flushes.
@@ -63,7 +63,7 @@ For every stale-number finding, confirm the current value with the user or with 
 
 ### Step 4: Fix
 
-- Update stale mentions, or annotate them as superseded if history should be preserved ("旧口径 4,600+ 已作废").
+- Update stale mentions, or annotate them as superseded if history should be preserved ("old value 4,600+ deprecated").
 - Remove or repair dangling references.
 - Do NOT delete orphan daily files; list them to the user and let them decide.
 - After edits, re-run the audit to confirm zero issues.
