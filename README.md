@@ -1,5 +1,7 @@
 # Memory Checkup
 
+[![ClawHub](https://img.shields.io/badge/ClawHub-install-orange)](https://clawhub.ai/thomaszhou22/memory-checkup)
+
 **Audit and repair an AI agent's memory corpus for consistency.**
 
 [English](./README.md) | [中文](./README_CN.md)
